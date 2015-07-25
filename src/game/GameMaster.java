@@ -12,6 +12,8 @@ public class GameMaster {
 	public final String WEST = "West";
 	public final String INVENTORY = "Inventory";
 
+	static Character character;
+	
 	public static void main(String[] args) {
 
 		Map gameMap = new Map("res/maps/testmap.txt");
@@ -20,7 +22,7 @@ public class GameMaster {
 		
 		
 		System.out.print("What is your name?: ");
-		Character character = new Character(scanner.next());
+		character = new Character(scanner.next());
 	
 		
 		System.out.println("Welcome to Arcadian Dungeon Adventure, " + character.getName() + "!");
@@ -41,25 +43,33 @@ public class GameMaster {
 						System.out.println("Increase by how much?");
 						String value = scanner.next();
 						int stat = Integer.parseInt(value);
-						if(stat < startingStats){
+						if(stat <= startingStats){
 							switch(attribute){
 							case "str":
 								character.setStrength(character.getStrength()+stat);
+								System.out.println("Strength incrased to " + character.getStrength() + "!");
 								correctIncrease=true;
 								break;
 							case "dex":
 								character.setDexterity(character.getDexterity()+stat);
+								System.out.println("Dexterity incrased to " + character.getDexterity() + "!");
 								correctIncrease=true;
 								break;
 							case "int":
 								character.setIntelligence(character.getIntelligence()+stat);
+								System.out.println("Intelligence incrased to " + character.getIntelligence() + "!");
 								correctIncrease=true;
 								break;
 							case "luck":
 								character.setLuck(character.getLuck()+stat);
+								System.out.println("Luck incrased to " + character.getLuck() + "!");
 								correctIncrease=true;
 								break;
+							default:
+								break;
 							}
+							statAdded = true;
+							startingStats = startingStats - stat;
 						}
 					}while(correctIncrease == false);
 				}
@@ -68,6 +78,8 @@ public class GameMaster {
 			
 		}while (startingStats > 0);
 		
+		System.out.print("Your starting stats are:\nStrength:\t" + character.getStrength() + "\nDexterity:\t" + character.getDexterity() + "\nIntelligence:\t" + character.getIntelligence() +
+								"\nLuck:\t" + character.getLuck() + "\n");
 		System.out.println("Can you make it out alive?");
 		
 		do{
