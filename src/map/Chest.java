@@ -5,4 +5,11 @@ public class Chest extends Tile {
 	private Boolean isTrap;
 	
 	
+	@Override
+	public void writeDescription() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }

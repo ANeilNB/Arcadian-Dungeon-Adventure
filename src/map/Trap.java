@@ -35,9 +35,13 @@ public class Trap extends Tile {
 			case 'c' : this.trapType = "Trapchest";
 						this.threshAttribute = "strength";
 					 break;
-			
+			default :  System.out.println("No Trap");
+					break;
 		}
 		this.threshValue = random.nextInt(MAX_RANDOM - MIN_RANDOM + 1) + MIN_RANDOM ;
+		
+		itemBypass = false;
+		isDisarmed = false;
 	}
 
 	public String getTrapType() {
