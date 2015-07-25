@@ -4,4 +4,7 @@ public class Openable extends Tile {
 
 	private Boolean isOpenable;
 	
+	
+	
+	
 }

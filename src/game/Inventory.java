@@ -28,7 +28,7 @@ public class Inventory {
 	public void printItems() { 
 	
 		if(items.isEmpty()) {
-			System.out.println("No Items in your Inventory");
+			System.out.println("No items in your inventory!");
 		}else { 	
 			for(Item i : items ) {
 				System.out.println(i);			
