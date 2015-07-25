@@ -7,6 +7,7 @@ public class Character {
 	private int strength;
 	private int dexterity;
 	private int intelligence;
+	private int luck;
 	private int maxHitPoints;
 	private int currentHitPoints;
 	
@@ -15,6 +16,26 @@ public class Character {
 	
 	private Inventory inventory;
 	
+	public Character(String name){
+		this.name = name;
+		this.strength = 20;
+		this.dexterity = 20;
+		this.intelligence = 20;
+		this.luck = 20;
+		this.maxHitPoints = 20;
+		this.currentHitPoints = this.maxHitPoints;
+		
+		inventory = new Inventory();
+	}
+	
+	public int getLuck() {
+		return luck;
+	}
+
+	public void setLuck(int luck) {
+		this.luck = luck;
+	}
+
 	public String getName() {
 		return name;
 	}
