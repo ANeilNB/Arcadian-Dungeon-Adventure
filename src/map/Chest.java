@@ -1,5 +1,8 @@
 package map;
 
+import java.util.ArrayList;
+
+import game.GameCharacter;
 import game.Item;
 
 public class Chest extends Tile {
@@ -51,9 +54,20 @@ public class Chest extends Tile {
 	}
 
 	@Override
-	public void writeDescription() {
-		// TODO Auto-generated method stub
+	public void writeDescription(GameCharacter character) {
+		
+		ArrayList<Item> inventory = character.getInventory().getItems();
+		
+		
+		for(Item i : inventory) {
+			if(i.getItemName() == "key") {
+				System.out.println("Chest Opened");
+				String itemName = item.getItemName();
+				character.addToInventory(itemName);
+			} 
+		}
+		
 		
 	}
-		
+	
 }
