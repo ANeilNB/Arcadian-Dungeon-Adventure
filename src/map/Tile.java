@@ -1,5 +1,5 @@
 package map;
 
-public class Tile {
-	
+public abstract class Tile {
+	public abstract void writeDescription();
 }
