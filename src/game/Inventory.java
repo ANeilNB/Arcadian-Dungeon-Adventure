@@ -26,11 +26,12 @@ public class Inventory {
 	}
 
 	public void printItems() { 
-		for(Item i : items ) {
-			if ( i != null ) { 
-			System.out.println(i);
-			} else { 
-				System.out.println("No Items in your Inventory");
+	
+		if(items.isEmpty()) {
+			System.out.println("No Items in your Inventory");
+		}else { 	
+			for(Item i : items ) {
+				System.out.println(i);			
 			}
 		}
 	}
