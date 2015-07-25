@@ -88,6 +88,8 @@ public class Character {
 		this.inventory = inventory;
 	}
 	
-	
-	
+	public void addToInventory(String itemName) { 
+		Item item = new Item(itemName);
+		inventory.add(item);
+	}
 }
