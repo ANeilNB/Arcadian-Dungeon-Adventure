@@ -1,0 +1,18 @@
+e - out of bounds
+o - immovable
+b - boulder
+s - spikes
+p - pit
+t - trapdoor
+c - trap chest
+d - door
+h - hidden door
+w - breakable wall
+s - start
+X - exit
+a - nothing
+r - chest with rope
+g - gloves of strength
+i - crown on int
+y - boots of dexterity
+l - ring of luck
