@@ -21,9 +21,17 @@ public class Item {
 		crownTaken = false;
 		bootTaken = false;
 		ringTaken = false;
-		
-		
 	}
+	
+	public String getItemName() {
+		return itemName;
+	}
+
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
 
 	public int gloveTaken(int strength) {
 		if(gloveTaken == false) {
@@ -45,6 +53,24 @@ public class Item {
 		return intelligence;
 	}
 	
+	public int bootTaken(int dexterity) {
+		if(bootTaken == false) {
+			int addedDexterity = bootsAtt + dexterity;
+			return addedDexterity;
+		}else { 
+			System.out.println("Boot has already been taken");
+		}
+		return dexterity;
+	}
 	
-	
+	public int ringTaken(int luck) {
+		if(ringTaken == false) {
+			int addedLuck = ringAtt + luck;
+			return addedLuck;
+		}else {
+			System.out.println("Ring has already been taken");
+		}
+		return luck;
+		
+	}
 }
