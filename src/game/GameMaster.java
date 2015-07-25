@@ -23,11 +23,10 @@ public class GameMaster {
 		
 		System.out.print("What is your name?: ");
 		character = new Character(scanner.next());
-	
 		
 		System.out.println("Welcome to Arcadian Dungeon Adventure, " + character.getName() + "!");
 		
-		character.getInventory().printItems();
+		//character.getInventory().printItems();
 		
 		int startingStats = 30;
 		do{
@@ -79,19 +78,86 @@ public class GameMaster {
 		}while (startingStats > 0);
 		
 		System.out.print("Your starting stats are:\nStrength:\t" + character.getStrength() + "\nDexterity:\t" + character.getDexterity() + "\nIntelligence:\t" + character.getIntelligence() +
-								"\nLuck:\t" + character.getLuck() + "\n");
+								"\nLuck:\t\t" + character.getLuck() + "\n");
+		
+		int[] start = gameMap.getStart();
+		
+		character.setLocationX(start[0]);
+		character.setLocationY(start[1]);
+		
+		System.out.println("Starting Location: X: " + character.getLocationX() + " Y: " + character.getLocationY());
+		
 		System.out.println("Can you make it out alive?");
 		
 		do{
+			//
 			//gameMap.getTile(character.getLocationX(),character.getLocationY()).writeDescription();
 			boolean validMove = false;
-				
 			do{
+				System.out.println("What do you want to do?");
+				String action = scanner.next();
+				action.toLowerCase();
+				switch(action){
+				case "help":
+					System.out.println("Commands are north, south, east, west and inventory");
+					break;
+				case "inventory":
+					character.getInventory().printItems();
+					break;
+				case "north":
+					int x = character.getLocationX();
+					int y = character.getLocationY();
+					if(gameMap.isInteractable(x, y-1)){
+						character.setLocationY(y-1);
+						System.out.println("You are trying to move to X: " + character.getLocationX() + " Y: " + character.getLocationY());
+						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						validMove = true;
+					}
+					else{
+						System.out.println("A wall blocks your path north!");
+					}
+					break;
+				case "south":
+					if(gameMap.isInteractable(character.getLocationX(), character.getLocationY()+1)){
+						character.setLocationY(character.getLocationY()+1);
+						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						validMove = true;
+					}
+					else{
+						System.out.println("A wall blocks your path south!");
+					}
+					break;
+				case "east":
+					if(gameMap.isInteractable(character.getLocationX()+1, character.getLocationY())){
+						character.setLocationX(character.getLocationX()+1);
+						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						validMove = true;
+					}
+					else{
+						System.out.println("A wall blocks your path east!");
+					}
+					break;
+				case "west":
+					if(gameMap.isInteractable(character.getLocationX()-1, character.getLocationY())){
+						character.setLocationX(character.getLocationX()-1);
+						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						validMove = true;
+					}
+					else{
+						System.out.println("A wall blocks your path west!");
+					}
+					break;
+				default:
+					System.out.println("You can't do this!");
+					break;
+			}
 				
 			}while(validMove == false);
 			
 			
 		}while(gameMap.getType(character.getLocationX(), character.getLocationY())!='X');
+		
+		System.out.println("YOU ARE WINNER");
 		
 		scanner.close();
 	}

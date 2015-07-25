@@ -24,7 +24,7 @@ public class MapGenerator {
 			String curRow;
 			for(int i=0; i < dimensions[0]; i++){
 				curRow = br.readLine();
-				for(int j=0; j < dimensions[1]-1; j++){
+				for(int j=0; j < dimensions[1]; j++){
 					newMap[line][j] = curRow.charAt(j);
 				}
 				line++;
@@ -62,7 +62,7 @@ public class MapGenerator {
 			    
 			    br.close();
 			    
-			    int[] result = {columnNumber, lineNumber};
+			    int[] result = {lineNumber,columnNumber};
 			    
 			    return result;
 			}
