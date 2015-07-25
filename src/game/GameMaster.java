@@ -12,7 +12,7 @@ public class GameMaster {
 	public final String WEST = "West";
 	public final String INVENTORY = "Inventory";
 
-	static Character character;
+	static GameCharacter character;
 	
 	public static void main(String[] args) {
 
@@ -22,7 +22,7 @@ public class GameMaster {
 		
 		
 		System.out.print("What is your name?: ");
-		character = new Character(scanner.next());
+		character = new GameCharacter(scanner.next());
 		
 		System.out.println("Welcome to Arcadian Dungeon Adventure, " + character.getName() + "!");
 		
@@ -110,7 +110,7 @@ public class GameMaster {
 					if(gameMap.isInteractable(x, y-1)){
 						character.setLocationY(y-1);
 						System.out.println("You are trying to move to X: " + character.getLocationX() + " Y: " + character.getLocationY());
-						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						gameMap.enterTile(character.getLocationX(),character.getLocationY(), character);
 						validMove = true;
 					}
 					else{
@@ -120,7 +120,7 @@ public class GameMaster {
 				case "south":
 					if(gameMap.isInteractable(character.getLocationX(), character.getLocationY()+1)){
 						character.setLocationY(character.getLocationY()+1);
-						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						gameMap.enterTile(character.getLocationX(),character.getLocationY(), character);
 						validMove = true;
 					}
 					else{
@@ -130,7 +130,7 @@ public class GameMaster {
 				case "east":
 					if(gameMap.isInteractable(character.getLocationX()+1, character.getLocationY())){
 						character.setLocationX(character.getLocationX()+1);
-						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						gameMap.enterTile(character.getLocationX(),character.getLocationY(), character);
 						validMove = true;
 					}
 					else{
@@ -140,7 +140,7 @@ public class GameMaster {
 				case "west":
 					if(gameMap.isInteractable(character.getLocationX()-1, character.getLocationY())){
 						character.setLocationX(character.getLocationX()-1);
-						gameMap.enterTile(character.getLocationX(),character.getLocationY());
+						gameMap.enterTile(character.getLocationX(),character.getLocationY(), character);
 						validMove = true;
 					}
 					else{

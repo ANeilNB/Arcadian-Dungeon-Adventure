@@ -1,7 +1,7 @@
 package game;
 
 
-public class Character {
+public class GameCharacter {
 	
 	private String name;
 	private int strength;
@@ -16,7 +16,7 @@ public class Character {
 	
 	private Inventory inventory;
 	
-	public Character(String name){
+	public GameCharacter(String name){
 		this.name = name;
 		this.strength = 20;
 		this.dexterity = 20;

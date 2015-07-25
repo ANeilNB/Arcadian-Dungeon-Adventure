@@ -2,6 +2,8 @@ package map;
 
 import java.util.Random;
 
+import game.GameCharacter;
+
 /**
  * @author Administrator
  *
@@ -85,9 +87,16 @@ public class Trap extends Tile {
 	}
 
 	@Override
-	public void writeDescription() {
-		// TODO Auto-generated method stub
-		
+	public void writeDescription(GameCharacter character) {
+		if(threshAttribute.equals("strength")){
+			if(character.getStrength() < threshValue){
+				character.setCurrentHitPoints(character.getCurrentHitPoints()-5);
+				System.out.println("Ow, you take 5 points of damage");
+			}
+			else{
+				System.out.println("Using your amazing strength you beat the trap!");
+			}
+		}
 	}
 		
 }

@@ -1,5 +1,6 @@
 package map;
 
+import game.GameCharacter;
 import game.MapGenerator;
 
 public class Map {
@@ -25,7 +26,7 @@ public class Map {
 	
 	public Tile getTile(int xVal, int yVal){
 		
-		if(xVal <= map.length && yVal < map[xVal].length) return tiles[xVal][yVal];
+		if(xVal <= map.length && yVal < map[xVal].length) return tiles[yVal][xVal];
 		else{
 			System.err.println("Map Error");
 			return null;
@@ -41,69 +42,78 @@ public class Map {
 		if(xVal < map[yVal].length){
 			System.out.println("X!");
 			x = true;
+			System.out.println(x);
 		}
 		if(yVal < map.length){
 			System.out.println("Y!");
 			y = true;
+			System.out.println(y);
 		}
-		if(x&&y){
-			System.out.println("Char= " + map[xVal][yVal]);
-			return map[xVal][yVal];
+		
+		System.out.println(xVal + " " + yVal);
+		if(x){
+			if(y) {
+				System.out.println("Passed!");
+				System.out.println("Char= " + map[yVal][xVal]);
+				return map[yVal][xVal];
+			}
 		}
-		else return '0';
+		
+			return '0';
+		
 	}
 	
-	public void enterTile(int xVal, int yVal){
+	public void enterTile(int xVal, int yVal, GameCharacter character){
 		if(getTile(xVal, yVal) == null){
 			char type = getType(xVal, yVal);
 			switch(type){
 			case 'b':
-				tiles[xVal][yVal] = new Trap('b');
+				tiles[yVal][xVal] = new Trap('b');
 				break;
 			case 's':
-				tiles[xVal][yVal] = new Trap('s');
+				tiles[yVal][xVal] = new Trap('s');
 				break;
 			case 'p':
-				tiles[xVal][yVal] = new Trap('p');
+				tiles[yVal][xVal] = new Trap('p');
 				break;
 			case 't':
-				tiles[xVal][yVal] = new Trap('t');
+				tiles[yVal][xVal] = new Trap('t');
 				break;
 			case 'c':
-				tiles[xVal][yVal] = new Trap('c');
+				tiles[yVal][xVal] = new Trap('c');
 				break;
 			case 'd':
-				tiles[xVal][yVal] = new Door();
+				tiles[yVal][xVal] = new Door();
 				break;
 			case 'h':
-				tiles[xVal][yVal] = new SecretPassage('h');
+				tiles[yVal][xVal] = new SecretPassage('h');
 				break;
 			case 'w':
-				tiles[xVal][yVal] = new SecretPassage('w');
+				tiles[yVal][xVal] = new SecretPassage('w');
 				break;
 			case 'a':
-				tiles[xVal][yVal] = new Corridor();
+				tiles[yVal][xVal] = new Corridor();
 				break;
 			case 'r':
-				tiles[xVal][yVal] = new Chest('r');
+				tiles[yVal][xVal] = new Chest('r');
 				break;
 			case 'g':
-				tiles[xVal][yVal] = new Chest('g');
+				tiles[yVal][xVal] = new Chest('g');
 				break;
 			case 'i':
-				tiles[xVal][yVal] = new Chest('i');
+				tiles[yVal][xVal] = new Chest('i');
 				break;
 			case 'y':
-				tiles[xVal][yVal] = new Chest('y');
+				tiles[yVal][xVal] = new Chest('y');
 				break;
 			case 'l':
-				tiles[xVal][yVal] = new Chest('l');
+				tiles[yVal][xVal] = new Chest('l');
 				break;
 			default:
 					break;
 			}
 		}
-		//getTile(xVal,yVal).writeDescription();
+		getTile(xVal,yVal).writeDescription(character);
 	}
 	
 	public boolean isInteractable(int xVal, int yVal){
