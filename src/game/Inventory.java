@@ -18,11 +18,11 @@ public class Inventory {
 	
 	
 	public Inventory() {
-		items = new ArrayList<Item>();
-		gloveTaken = false;
-		crownTaken = false;
-		bootTaken = false;
-		ringTaken = false;
+		this.items = new ArrayList<Item>();
+		this.gloveTaken = false;
+		this.crownTaken = false;
+		this.bootTaken = false;
+		this.ringTaken = false;
 	}
 
 	public void printItems() { 
