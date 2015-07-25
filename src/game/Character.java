@@ -1,6 +1,5 @@
 package game;
 
-import java.util.ArrayList;
 
 public class Character {
 	
@@ -14,8 +13,8 @@ public class Character {
 	private int locationX;
 	private int locationY;
 	
-	private ArrayList<Item> inventory;
-
+	private Inventory inventory;
+	
 	public String getName() {
 		return name;
 	}
@@ -80,16 +79,18 @@ public class Character {
 		this.locationY = locationY;
 	}
 
-	public ArrayList<Item> getInventory() {
+	public Inventory getInventory() {
 		return inventory;
 	}
 
-	public void setInventory(ArrayList<Item> inventory) {
+	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
 	
-	public void addToInventory(String itemName) { 
+	public void addToInventory(String itemName) {
 		Item item = new Item(itemName);
-		inventory.add(item);
+		inventory.getItems().add(item);
 	}
+	
+	
 }
