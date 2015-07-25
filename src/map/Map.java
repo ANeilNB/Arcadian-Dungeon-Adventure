@@ -39,7 +39,8 @@ public class Map {
 		if(getTile(xVal, yVal) == null){
 			char type = getType(yVal, xVal);
 			switch(type){
-				//cases for each character making relevant class
+			case 'b':
+				break;
 			}
 		}
 	}
